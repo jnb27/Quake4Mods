@@ -84,6 +84,7 @@ rvMonsterStroggMarine::rvMonsterStroggMarine ( ) {
 
 void rvMonsterStroggMarine::InitSpawnArgsVariables( void )
 {
+	//If team is marine do exp and more stats
 	maxShots = spawnArgs.GetInt ( "maxShots", "1" );
 	minShots = spawnArgs.GetInt ( "minShots", "1" );
 	attackRate = SEC2MS( spawnArgs.GetFloat( "attackRate", "0.2" ) );

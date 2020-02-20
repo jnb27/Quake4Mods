@@ -949,6 +949,9 @@ void idAI::WakeUp ( void ) {
 
 	// Default enemy?
 	if ( !combat.fl.ignoreEnemies ) {
+		//JNB27
+		//This tells the game if you have something specific to target, target it
+		//Second part of the if statement is like go target whatever you gotta hit next
 		if ( spawnArgs.GetString ( "enemy", "", &temp ) && *temp ) {	
 			SetEnemy ( gameLocal.FindEntity ( temp ) );
 		} else if ( spawnArgs.GetBool ( "forceEnemy", "0" ) ) {
