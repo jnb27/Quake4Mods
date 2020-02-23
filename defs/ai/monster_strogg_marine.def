@@ -925,7 +925,7 @@ entityDef monster_strogg_marine_base
 	"chatter_combat_rate"				"8"	
 
 	// --------------------------------- Combat ----------------------------------
-	"health"							"800"   // was 80
+	"health"							"400"   // was 80
 	"attackRange"						"300 600"
 	"melee_range"						"72"
 	"maxLostVisTime"					"5"
