@@ -433,6 +433,26 @@ stateResult_t rvWeaponBlaster::State_Fire ( const stateParms_t& parms ) {
 			} else {
 				Attack ( false, 1, 0.1f, 0, 1000.0f );
 
+				//JNB27 Gonna try and make gun spawn enemy
+				idDict                test;
+				float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
+				test.Set("classname", "monster_strogg_marine");
+				test.Set("angle", va("%f", yaw + 180));
+
+				//So what I need is that the thing needs to know where to spawn the monster so preferabbly where the player is looking
+				idVec3 org = player->GetPhysics()->GetOrigin() + idAngles(0, yaw, 0).ToForward() * 80 + idVec3(0, 0, 1);
+				test.Set("origin", org.ToString());
+
+				idEntity *pokemon = NULL;
+
+				gameLocal.SpawnEntityDef(test, &pokemon);
+
+				((idAI*)pokemon)->team = gameLocal.GetLocalPlayer()->team;
+				((idAI*)pokemon)->SetLeader(gameLocal.GetLocalPlayer());
+				((idAI*)pokemon)->aifl.undying = false;
+
+				//JNB27 Ending of code segment
+
 				PlayEffect ( "fx_normalflash", barrelJointView, false );
 				PlayAnim( ANIMCHANNEL_ALL, "fire", parms.blendFrames );
 			}
