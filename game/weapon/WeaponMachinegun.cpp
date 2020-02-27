@@ -233,6 +233,28 @@ stateResult_t rvWeaponMachinegun::State_Fire ( const stateParms_t& parms ) {
 			} else {
 				nextAttackTime = gameLocal.time + (fireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));
 				Attack ( false, 1, spread, 0, 1.0f );
+				//JNB27 Gonna try and make gun spawn enemy THIS WORKS
+				idPlayer* player;
+				player = gameLocal.GetLocalPlayer();
+
+				idDict                test;
+				float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
+				test.Set("classname", "monster_gladiator");
+				test.Set("angle", va("%f", yaw + 180));
+
+				//So what I need is that the thing needs to know where to spawn the monster 
+				idVec3 org = player->GetPhysics()->GetOrigin() + idAngles(0, yaw, 0).ToForward() * 80 + idVec3(0, 0, 1);
+				test.Set("origin", org.ToString());
+
+				idEntity *pokemon = NULL;
+
+				gameLocal.SpawnEntityDef(test, &pokemon);
+
+				((idAI*)pokemon)->team = gameLocal.GetLocalPlayer()->team;
+				((idAI*)pokemon)->SetLeader(gameLocal.GetLocalPlayer());
+				((idAI*)pokemon)->aifl.undying = false;
+
+				//JNB27 Ending of code segment
 			}
 			PlayAnim ( ANIMCHANNEL_ALL, "fire", 0 );	
 			return SRESULT_STAGE ( STAGE_WAIT );
