@@ -339,6 +339,9 @@ void idInventory::RestoreInventory( idPlayer *owner, const idDict &dict ) {
 	maxHealth		= dict.GetInt( "maxhealth", "100" );
 	armor			= dict.GetInt( "armor", "50" );
 	maxarmor		= dict.GetInt( "maxarmor", "100" );
+	experience		= dict.GetInt( "experience", "0" );
+	currentpowerlevel = dict.GetInt( "currentpowerlevel", "3");
+	
 
 	// ammo
 	for( i = 0; i < MAX_AMMOTYPES; i++ ) {
@@ -9280,6 +9283,7 @@ void idPlayer::LoadDeferredModel( void ) {
 idPlayer::Think
 
 Called every tic for each player
+Basically this is the player update loop.
 ==============
 */
 void idPlayer::Think( void ) {

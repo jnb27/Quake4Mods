@@ -200,6 +200,9 @@ public:
 // squirrel: Mode-agnostic buymenus
 	int						carryOverWeapons;
 // RITUAL END
+	//JNB27
+	int						experience;
+	int						currentpowerlevel;
 	int						powerups;
 	int						armor;
 	int						maxarmor;
