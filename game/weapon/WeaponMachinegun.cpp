@@ -239,7 +239,22 @@ stateResult_t rvWeaponMachinegun::State_Fire ( const stateParms_t& parms ) {
 
 				idDict                test;
 				float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
-				test.Set("classname", "monster_gladiator");
+				if (gameLocal.GetLocalPlayer()->inventory.currentpowerlevel == 1)
+				{
+					test.Set("classname", "monster_strogg_marine");
+				}
+				else if (gameLocal.GetLocalPlayer()->inventory.currentpowerlevel == 2)
+				{
+					test.Set("classname", "monster_gladiator");
+				}
+				else if (gameLocal.GetLocalPlayer()->inventory.currentpowerlevel == 3)
+				{
+					test.Set("classname", "monster_berserker");
+				}
+				else{
+					test.Set("classname", "monster_repair_bot");
+				}
+				
 				test.Set("angle", va("%f", yaw + 180));
 
 				//So what I need is that the thing needs to know where to spawn the monster 
