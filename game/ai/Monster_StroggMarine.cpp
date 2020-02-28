@@ -85,6 +85,13 @@ rvMonsterStroggMarine::rvMonsterStroggMarine ( ) {
 void rvMonsterStroggMarine::InitSpawnArgsVariables( void )
 {
 	//If team is marine do exp and more stats
+	gameLocal.Printf("InitRan");
+	if (GetLeader() == gameLocal.GetLocalPlayer())
+	{
+		//Damage * Level = Damage
+		//Health * Level = Health
+		gameLocal.Printf("On your team");
+	}
 	maxShots = spawnArgs.GetInt ( "maxShots", "1" );
 	minShots = spawnArgs.GetInt ( "minShots", "1" );
 	attackRate = SEC2MS( spawnArgs.GetFloat( "attackRate", "0.2" ) );
@@ -104,6 +111,15 @@ void rvMonsterStroggMarine::Spawn ( void ) {
 	actionReload.Init  ( spawnArgs, "action_reload",	NULL, 0 );
 
 	InitSpawnArgsVariables();
+	//If team is marine do exp and more stats
+	gameLocal.Printf("SpawnRan");
+	//This IF statement does not run
+	if (GetLeader() == gameLocal.GetLocalPlayer())
+	{
+		//Damage * Level = Damage
+		//Health * Level = Health
+		gameLocal.Printf("On your team2");
+	}
 
 	shots	 = 0;
 	shotsFired = 0;
