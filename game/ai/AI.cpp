@@ -1756,6 +1756,8 @@ void idAI::Killed( idEntity *inflictor, idEntity *attacker, int damage, const id
 		}
 		kv = spawnArgs.MatchPrefix( "def_drops", kv );
 	}
+	//JNB27
+	gameLocal.Printf("Ai Killed function ran I think");
 }
 
 /***********************************************************************
