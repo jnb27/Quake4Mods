@@ -2509,6 +2509,9 @@ void idActor::Damage( idEntity *inflictor, idEntity *attacker, const idVec3 &dir
 				}
 			}
 			Killed( inflictor, attacker, damage, dir, location );
+			//Testing out where which killed function runs JNB27
+
+			gameLocal.Printf("Actor Killed function ran");
 			gibbed = saveGibbed;
 			if ( health < -20 )
 			{
