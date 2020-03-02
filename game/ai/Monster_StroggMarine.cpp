@@ -85,7 +85,7 @@ rvMonsterStroggMarine::rvMonsterStroggMarine ( ) {
 void rvMonsterStroggMarine::InitSpawnArgsVariables( void )
 {
 	//If team is marine do exp and more stats
-	gameLocal.Printf("InitRan");
+	gameLocal.Printf("Init Ran in here");
 	if (GetLeader() == gameLocal.GetLocalPlayer())
 	{
 		//Damage * Level = Damage
