@@ -1757,7 +1757,16 @@ void idAI::Killed( idEntity *inflictor, idEntity *attacker, int damage, const id
 		kv = spawnArgs.MatchPrefix( "def_drops", kv );
 	}
 	//JNB27
-	gameLocal.Printf("Ai Killed function ran I think");
+	gameLocal.Printf("Ai Killed function ");
+	if (attacker->GetTeamMaster() == gameLocal.GetLocalPlayer())
+	{
+		gameLocal.Printf("The check I wrote in AI cpp works.");
+		gameLocal.GetLocalPlayer()->inventory.experience += 75;
+	}
+	else
+	{
+		gameLocal.Printf("The check failed");
+	}
 }
 
 /***********************************************************************
