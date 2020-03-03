@@ -334,13 +334,28 @@ void idInventory::RestoreInventory( idPlayer *owner, const idDict &dict ) {
 
 	//We might not need to clear it out.
 	//Clear();
-
+	gameLocal.Printf("Restore Inv");
 	// health/armor
 	maxHealth		= dict.GetInt( "maxhealth", "100" );
 	armor			= dict.GetInt( "armor", "50" );
 	maxarmor		= dict.GetInt( "maxarmor", "100" );
 	experience		= dict.GetInt( "experience", "0" );
-	currentpowerlevel = dict.GetInt( "currentpowerlevel", "3");
+	if (experience == 0 || experience < 50)
+	{
+		currentpowerlevel = dict.GetInt("currentpowerlevel", "1");
+	}
+	else if (experience >= 50 && experience < 100)
+	{
+		currentpowerlevel = dict.GetInt("currentpowerlevel", "2");
+	}
+	else if (experience >= 100)
+	{
+		currentpowerlevel = dict.GetInt("currentpowerlevel", "3");
+	}
+	else
+	{
+		gameLocal.Printf("EXP machine broke");
+	}
 	
 
 	// ammo
