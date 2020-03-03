@@ -3668,8 +3668,6 @@ void idEntity::Damage( idEntity *inflictor, idEntity *attacker, const idVec3 &di
 			}
 
 			Killed( inflictor, attacker, damage, dir, location );
-			//JNB27
-			gameLocal.Printf("The Killed function runs in the Entity.cpp");
 		} else {
 			Pain( inflictor, attacker, damage, dir, location );
 		}
