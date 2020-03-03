@@ -239,15 +239,15 @@ stateResult_t rvWeaponMachinegun::State_Fire ( const stateParms_t& parms ) {
 
 				idDict                test;
 				float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
-				if (gameLocal.GetLocalPlayer()->inventory.currentpowerlevel == 1)
+				if (gameLocal.GetLocalPlayer()->inventory.experience < 50)
 				{
 					test.Set("classname", "monster_strogg_marine");
 				}
-				else if (gameLocal.GetLocalPlayer()->inventory.currentpowerlevel == 2)
+				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 50 && gameLocal.GetLocalPlayer()->inventory.experience < 100)
 				{
 					test.Set("classname", "monster_gladiator");
 				}
-				else if (gameLocal.GetLocalPlayer()->inventory.currentpowerlevel == 3)
+				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 100 && gameLocal.GetLocalPlayer()->inventory.experience < 200)
 				{
 					test.Set("classname", "monster_berserker");
 				}
