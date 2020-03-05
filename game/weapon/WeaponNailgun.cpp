@@ -671,6 +671,13 @@ stateResult_t rvWeaponNailgun::State_Fire( const stateParms_t& parms ) {
 				nextAttackTime = gameLocal.time + (altFireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));
 			} else {
 				Attack ( false, 1, spread, 0.0f, 1.0f );
+				//Can i make this gun cleanse me
+				idPlayer*  player;
+				player = gameLocal.GetLocalPlayer();
+
+				player->StopPowerUpEffect(POWERUP_HASTE);
+				player->ClearPowerup(POWERUP_HASTE);
+				//player->ClearPowerUps();
 				nextAttackTime = gameLocal.time + (fireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));
 			}
 			
