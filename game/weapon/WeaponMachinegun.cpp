@@ -245,11 +245,11 @@ stateResult_t rvWeaponMachinegun::State_Fire ( const stateParms_t& parms ) {
 				}
 				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 50 && gameLocal.GetLocalPlayer()->inventory.experience < 100)
 				{
-					test.Set("classname", "monster_gladiator");
+					test.Set("classname", "monster_berserker");	
 				}
-				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 100 && gameLocal.GetLocalPlayer()->inventory.experience < 200)
+				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 100 && gameLocal.GetLocalPlayer()->inventory.experience < 1000)
 				{
-					test.Set("classname", "monster_berserker");
+					test.Set("classname", "monster_gladiator");
 				}
 				else{
 					test.Set("classname", "monster_repair_bot");
@@ -263,11 +263,16 @@ stateResult_t rvWeaponMachinegun::State_Fire ( const stateParms_t& parms ) {
 
 				idEntity *pokemon = NULL;
 
+				
+
 				gameLocal.SpawnEntityDef(test, &pokemon);
 
 				((idAI*)pokemon)->team = gameLocal.GetLocalPlayer()->team;
 				((idAI*)pokemon)->SetLeader(gameLocal.GetLocalPlayer());
 				((idAI*)pokemon)->aifl.undying = false;
+
+				player->mypokemon = pokemon;
+				
 
 				//JNB27 Ending of code segment
 			}

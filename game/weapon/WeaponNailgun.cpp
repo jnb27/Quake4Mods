@@ -678,6 +678,16 @@ stateResult_t rvWeaponNailgun::State_Fire( const stateParms_t& parms ) {
 				player->StopPowerUpEffect(POWERUP_HASTE);
 				player->ClearPowerup(POWERUP_HASTE);
 				//player->ClearPowerUps();
+
+				if (player->mypokemon != NULL)
+				{
+					float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
+					idVec3 org = player->GetPhysics()->GetOrigin() + idAngles(0, yaw, 0).ToForward() * 80 + idVec3(0, 0, 1);
+					player->mypokemon->Killed(player, player, 100000, org, 1);
+					player->mypokemon = NULL;
+				}
+
+
 				nextAttackTime = gameLocal.time + (fireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));
 			}
 			
