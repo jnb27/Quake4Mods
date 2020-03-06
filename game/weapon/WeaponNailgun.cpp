@@ -675,9 +675,9 @@ stateResult_t rvWeaponNailgun::State_Fire( const stateParms_t& parms ) {
 				idPlayer*  player;
 				player = gameLocal.GetLocalPlayer();
 
-				player->StopPowerUpEffect(POWERUP_HASTE);
-				player->ClearPowerup(POWERUP_HASTE);
-				//player->ClearPowerUps();
+				//player->StopPowerUpEffect(POWERUP_HASTE);
+				//player->ClearPowerup(POWERUP_HASTE);
+				player->ClearPowerUps();
 
 				if (player->mypokemon != NULL)
 				{
