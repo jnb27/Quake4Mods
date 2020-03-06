@@ -416,6 +416,10 @@ public:
 	bool					vsMsgState;
 
 	int						lastPickupTime;
+	idEntity*				mypokemon;
+	idAI*					mypokemon2;
+	
+	/*bool					poweredup;*/
 //RAVEN BEGIN
 // asalmon: the eneny the player is most likely currently aiming at
 #ifdef _XBOX
