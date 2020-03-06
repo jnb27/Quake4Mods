@@ -193,6 +193,9 @@ const idVec4 marineHitscanTint( 0.69f, 1.0f, 0.4f, 1.0f );
 const idVec4 stroggHitscanTint( 1.0f, 0.5f, 0.0f, 1.0f );
 const idVec4 defaultHitscanTint( 0.4f, 1.0f, 0.4f, 1.0f );
 
+int timertest;
+idPlayer* player;
+
 /*
 ==============
 idInventory::Clear
@@ -340,22 +343,7 @@ void idInventory::RestoreInventory( idPlayer *owner, const idDict &dict ) {
 	armor			= dict.GetInt( "armor", "50" );
 	maxarmor		= dict.GetInt( "maxarmor", "100" );
 	experience		= dict.GetInt( "experience", "0" );
-	if (experience == 0 || experience < 50)
-	{
-		currentpowerlevel = dict.GetInt("currentpowerlevel", "1");
-	}
-	else if (experience >= 50 && experience < 100)
-	{
-		currentpowerlevel = dict.GetInt("currentpowerlevel", "2");
-	}
-	else if (experience >= 100)
-	{
-		currentpowerlevel = dict.GetInt("currentpowerlevel", "3");
-	}
-	else
-	{
-		gameLocal.Printf("EXP machine broke");
-	}
+	
 	
 
 	// ammo
@@ -1516,6 +1504,7 @@ idPlayer::Init
 void idPlayer::Init( void ) {
 	const char			*value;
 	
+	timertest				= 200;
 	noclip					= false;
 	godmode					= false;
 	godmodeDamage			= 0;
@@ -9319,6 +9308,23 @@ void idPlayer::Think( void ) {
 		}
 	}
 
+	
+	/*if(poweredup)
+	{
+		gameLocal.Printf("Im poweredup");
+		timertest -= (gameLocal.time % 25 == 0);
+		if (timertest <= 0)
+		{
+			gameLocal.Printf("We ran outta time");
+			player->StopPowerUpEffect(POWERUP_HASTE);
+			player->ClearPowerup(POWERUP_HASTE);
+			player->poweredup = false;
+			timertest = 200;
+		}
+	}*/
+
+	
+	
 	if ( !gameLocal.usercmds ) {
 		return;
 	}
