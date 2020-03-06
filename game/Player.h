@@ -416,7 +416,7 @@ public:
 	bool					vsMsgState;
 
 	int						lastPickupTime;
-	idEntity*				mypokemon;
+	idEntity*				mypokemon = NULL;
 	idAI*					mypokemon2;
 	
 	/*bool					poweredup;*/
