@@ -165,6 +165,21 @@ stateResult_t rvWeaponShotgun::State_Fire( const stateParms_t& parms ) {
 		case STAGE_INIT:
 			nextAttackTime = gameLocal.time + (fireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));
 			Attack( false, hitscans, spread, 0, 1.0f );
+
+			//JNB27 Gonna try and issue AI commands here changing the flags work
+			idPlayer* player;
+			player = gameLocal.GetLocalPlayer();
+
+			if (player->mypokemon != NULL)
+			{
+				((idAI*)(player->mypokemon))->aifl.undying = true;
+			}
+
+
+
+
+
+
 			PlayAnim( ANIMCHANNEL_ALL, "fire", 0 );	
 			return SRESULT_STAGE( STAGE_WAIT );
 	
