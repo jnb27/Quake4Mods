@@ -427,31 +427,68 @@ stateResult_t rvWeaponBlaster::State_Fire ( const stateParms_t& parms ) {
 
 	
 			if ( gameLocal.time - fireHeldTime > chargeTime ) {	
-				Attack ( true, 1, spread, 0, 1.0f );
+				Attack ( true, 5, spread, 0, 1.0f );
+				//Binding state change to the charged shot
+
+
+
+
 				PlayEffect ( "fx_chargedflash", barrelJointView, false );
 				PlayAnim( ANIMCHANNEL_ALL, "chargedfire", parms.blendFrames );
 			} else {
 				Attack ( false, 1, 0.1f, 0, 1000.0f );
 				//JNB27 Gonna try and make gun spawn enemy THIS WORKS
+
+				idPlayer* player;
+				player = gameLocal.GetLocalPlayer();
+
 				idDict                test;
 				float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
-				test.Set("classname", "monster_strogg_marine");
+				if (gameLocal.GetLocalPlayer()->inventory.experience < 50)
+				{
+					test.Set("classname", "monster_strogg_marine");
+				}
+				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 50 && gameLocal.GetLocalPlayer()->inventory.experience < 100)
+				{
+					test.Set("classname", "monster_berserker");
+				}
+				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 100 && gameLocal.GetLocalPlayer()->inventory.experience < 1000)
+				{
+					test.Set("classname", "monster_gladiator");
+				}
+				else{
+					test.Set("classname", "monster_repair_bot");
+				}
+
 				test.Set("angle", va("%f", yaw + 180));
 
 				//So what I need is that the thing needs to know where to spawn the monster 
 				idVec3 org = player->GetPhysics()->GetOrigin() + idAngles(0, yaw, 0).ToForward() * 80 + idVec3(0, 0, 1);
 				test.Set("origin", org.ToString());
 
-				idEntity *pokemon = NULL;
+				if (player->mypokemon == NULL)
+				{
+					idEntity *pokemon = NULL;
 
-				gameLocal.SpawnEntityDef(test, &pokemon);
+					gameLocal.SpawnEntityDef(test, &pokemon);
 
-				((idAI*)pokemon)->team = gameLocal.GetLocalPlayer()->team;
-				((idAI*)pokemon)->SetLeader(gameLocal.GetLocalPlayer());
-				((idAI*)pokemon)->aifl.undying = false;
-				//possible command stuff
-				//((idAI*)pokemon->aifl.disableAttacks = true;
+					((idAI*)pokemon)->team = gameLocal.GetLocalPlayer()->team;
+					((idAI*)pokemon)->SetLeader(gameLocal.GetLocalPlayer());
+					((idAI*)pokemon)->aifl.undying = false;
+
+					player->mypokemon = pokemon;
+				}
+				else{
+
+					float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
+					idVec3 org = player->GetPhysics()->GetOrigin() + idAngles(0, yaw, 0).ToForward() * 80 + idVec3(0, 0, 1);
+					player->mypokemon->Killed(player, player, 100000, org, 1);
+					player->inventory.experience -= 75;
+					player->mypokemon = NULL;
+				}
 				
+
+
 
 				//JNB27 Ending of code segment
 
