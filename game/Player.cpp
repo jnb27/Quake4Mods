@@ -9307,7 +9307,7 @@ void idPlayer::Think( void ) {
 			}
 		}
 	}
-
+	
 	
 	/*if(poweredup)
 	{
