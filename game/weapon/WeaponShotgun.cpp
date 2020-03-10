@@ -172,9 +172,16 @@ stateResult_t rvWeaponShotgun::State_Fire( const stateParms_t& parms ) {
 
 			if (player->mypokemon != NULL)
 			{
-				((idAI*)(player->mypokemon))->aifl.undying = true;
-			}
+				((idAI*)(player->mypokemon))->aifl.undying = false;
+				((idAI*)(player->mypokemon))->aifl.disableAttacks = true;
 
+				((idAI*)(player->mypokemon))->aifl.killerGuard = true;
+				
+				((idAI*)(player->mypokemon))->fl.takedamage = false;
+				((idAI*)(player->mypokemon))->health = 5;
+				((idAI*)(player->mypokemon))->health = 100;
+			}
+		
 
 
 
