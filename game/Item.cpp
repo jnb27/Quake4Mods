@@ -603,6 +603,64 @@ bool idItem::GiveToPlayer( idPlayer *player ) {
 		return false;
 	} 
 
+	//JNB27 Testing Ammo pickup buffs
+
+	//if (idStr::Icmpn(name, "ammo", 4) == 0){
+	//	//player->GivePowerUp(POWERUP_HASTE, SEC2MS(20.0f));
+	//	
+	//	((idAI*)player->mypokemon)->aifl.killerGuard = true;
+	//	player->mypokemon->health = 500;
+	//	/*player->poweredup = true;*/
+	//}
+
+	if (idStr::Icmpn(name, "ammo_machinegun", 15) == 0)
+	{
+		//Running shoes
+		gameLocal.Printf("GOT Here");
+		pm_speed.SetFloat(500.0f);
+	}
+
+	if (idStr::Icmpn(name, "ammo_machinegun", 15) == 0)
+	{
+		gameLocal.Printf("GOT Here2");
+		//Do logic to check between now and the next level RARE CANDY
+
+		
+
+		player->inventory.experience += 100;
+	}
+
+	if (idStr::Icmpn(name, "ammo_machinegun", 15) == 0)
+	{
+		gameLocal.Printf("GOT Here3");
+		//Juice up Strogg STROGG ROIDS
+		if (player->mypokemon != NULL)
+		{
+			((idAI*)(player->mypokemon))->aifl.killerGuard = true;
+		}
+		
+	}
+
+	if (idStr::Icmpn(name, "ammo_machinegun", 15) == 0)
+	{
+		//Heal on item pickup
+		gameLocal.Printf("GOT Here4");
+		if (player->mypokemon != NULL)
+		{
+			((idAI*)(player->mypokemon))->health += 200;
+		}
+	}
+
+	if (idStr::Icmpn(name, "ammo_machinegun", 15) == 0)
+	{
+		//Invincibility juice
+		gameLocal.Printf("GOT Here5");
+		if (player->mypokemon != NULL)
+		{
+			((idAI*)(player->mypokemon))->aifl.undying = true;
+		}
+	}
+
 	return player->GiveItem( this );
 }
 
