@@ -232,49 +232,7 @@ stateResult_t rvWeaponMachinegun::State_Fire ( const stateParms_t& parms ) {
 				fireHeld = true;
 			} else {
 				nextAttackTime = gameLocal.time + (fireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));
-				Attack ( false, 1, spread, 0, 1.0f );
-				//JNB27 Gonna try and make gun spawn enemy THIS WORKS
-				idPlayer* player;
-				player = gameLocal.GetLocalPlayer();
-
-				idDict                test;
-				float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
-				if (gameLocal.GetLocalPlayer()->inventory.experience < 50)
-				{
-					test.Set("classname", "monster_strogg_marine");
-				}
-				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 50 && gameLocal.GetLocalPlayer()->inventory.experience < 100)
-				{
-					test.Set("classname", "monster_berserker");	
-				}
-				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 100 && gameLocal.GetLocalPlayer()->inventory.experience < 1000)
-				{
-					test.Set("classname", "monster_gladiator");
-				}
-				else{
-					test.Set("classname", "monster_repair_bot");
-				}
-				
-				test.Set("angle", va("%f", yaw + 180));
-
-				//So what I need is that the thing needs to know where to spawn the monster 
-				idVec3 org = player->GetPhysics()->GetOrigin() + idAngles(0, yaw, 0).ToForward() * 80 + idVec3(0, 0, 1);
-				test.Set("origin", org.ToString());
-
-				idEntity *pokemon = NULL;
-
-				
-
-				gameLocal.SpawnEntityDef(test, &pokemon);
-
-				((idAI*)pokemon)->team = gameLocal.GetLocalPlayer()->team;
-				((idAI*)pokemon)->SetLeader(gameLocal.GetLocalPlayer());
-				((idAI*)pokemon)->aifl.undying = false;
-
-				player->mypokemon = pokemon;
-				
-
-				//JNB27 Ending of code segment
+				Attack ( false, 12, spread, 0, 1.0f );
 			}
 			PlayAnim ( ANIMCHANNEL_ALL, "fire", 0 );	
 			return SRESULT_STAGE ( STAGE_WAIT );
