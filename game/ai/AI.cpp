@@ -1145,6 +1145,12 @@ void idAI::Think( void ) {
 		return;
 	}
 
+	//Testing the Idle stop think
+	if (smoothbrain)
+	{
+		return;
+	}
+
 	// Simple think this frame?
 	aifl.simpleThink = aiManager.IsSimpleThink ( this );
 
