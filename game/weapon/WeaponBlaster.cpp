@@ -429,8 +429,22 @@ stateResult_t rvWeaponBlaster::State_Fire ( const stateParms_t& parms ) {
 			if ( gameLocal.time - fireHeldTime > chargeTime ) {	
 				Attack ( true, 5, spread, 0, 1.0f );
 				//Binding state change to the charged shot
+				idPlayer* player;
+				player = gameLocal.GetLocalPlayer();
 
+				if (player->mypokemon != NULL)
+				{
+					if (player->mypokemon->smoothbrain)
+					{
+						player->mypokemon->smoothbrain = false;
+						((idAI*)(player->mypokemon))->team = gameLocal.GetLocalPlayer()->team;
+						((idAI*)(player->mypokemon))->SetLeader(gameLocal.GetLocalPlayer());
+					}
+					else{
+						player->mypokemon->smoothbrain = true;
+					}
 
+				}
 
 
 				PlayEffect ( "fx_chargedflash", barrelJointView, false );
@@ -483,7 +497,10 @@ stateResult_t rvWeaponBlaster::State_Fire ( const stateParms_t& parms ) {
 					float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
 					idVec3 org = player->GetPhysics()->GetOrigin() + idAngles(0, yaw, 0).ToForward() * 80 + idVec3(0, 0, 1);
 					player->mypokemon->Killed(player, player, 100000, org, 1);
-					player->inventory.experience -= 75;
+					if (player->inventory.experience >= 75)
+					{
+						player->inventory.experience -= 75;
+					}
 					player->mypokemon = NULL;
 				}
 				
