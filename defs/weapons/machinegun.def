@@ -87,7 +87,7 @@ entityDef weapon_machinegun
 	"joint_world_flash"			"muzzle_flash"
 
 	"inv_weapon"				"weapon_machinegun"
-	"inv_start_ammo_machinegun"		"80"
+	"inv_start_ammo_machinegun"		"80" //was 80
 	"inv_item"					"1"
 	"inv_icon"					"gfx/guis/hud/icons/item_machinegun.tga"
 	"inv_name"					"#str_107406"
@@ -100,8 +100,8 @@ entityDef weapon_machinegun
 	"def_althitscan"			"hitscan_zoomed_bullet"
 	
 	"ammoType"					"ammo_machinegun" //ammo_machinegun
-	"ammoRequired"				"0" 
-	"clipSize"					"0"
+	"ammoRequired"				"1" 
+	"clipSize"					"100"
 	"lowAmmo"					"10"
 	"gui"						"guis/weapons/machinegun_ammo.gui"
 	"gui2"						"guis/weapons/machinegun_inview_scope.gui"
