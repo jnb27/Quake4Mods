@@ -3399,6 +3399,27 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 	
 	assert ( _hud );
 
+	if(mypokemon != NULL)
+	{
+		gameLocal.Printf("We live baby");
+		char buff[500];
+		int hptest = ((idAI*)(mypokemon))->health;
+		sprintf_s(buff, "HP:\t%d", hptest);
+		_hud->SetStateString("pokemonhp", buff);
+	}
+	else{
+		gameLocal.Printf("We live part 2");
+		char buff[500];
+		int hptest = 0;
+		sprintf_s(buff, "No pokemon out", hptest);
+		_hud->SetStateString("pokemonhp", buff);
+	}
+
+	char buff2[500];
+	int experiencenum = inventory.experience;
+	sprintf_s(buff2, "XP:\t%d", experiencenum);
+	_hud->SetStateString("experiencenum", buff2);
+
 	temp = _hud->State().GetInt ( "player_health", "-1" );
 	if ( temp != health ) {		
 		_hud->SetStateInt   ( "player_healthDelta", temp == -1 ? 0 : (temp - health) );
