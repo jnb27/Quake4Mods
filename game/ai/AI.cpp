@@ -1767,7 +1767,7 @@ void idAI::Killed( idEntity *inflictor, idEntity *attacker, int damage, const id
 	if (attacker->GetTeamMaster() == gameLocal.GetLocalPlayer())
 	{
 		gameLocal.Printf("The check I wrote in AI cpp works.");
-		gameLocal.GetLocalPlayer()->inventory.experience += 75;
+		gameLocal.GetLocalPlayer()->inventory.experience += 55;
 	}
 	else
 	{
