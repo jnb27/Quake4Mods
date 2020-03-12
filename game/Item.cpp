@@ -613,14 +613,14 @@ bool idItem::GiveToPlayer( idPlayer *player ) {
 	//	/*player->poweredup = true;*/
 	//}
 
-	if (idStr::Icmpn(name, "ammo_machinegun", 15) == 0)
+	if (idStr::Icmpn(name, "ammo_napalmgun", 14) == 0)
 	{
 		//Running shoes
 		gameLocal.Printf("GOT Here");
-		pm_speed.SetFloat(500.0f);
+		pm_speed.SetFloat(600.0f);
 	}
 
-	if (idStr::Icmpn(name, "ammo_machinegun", 15) == 0)
+	if (idStr::Icmpn(name, "ammo_nailgun", 12) == 0)
 	{
 		gameLocal.Printf("GOT Here2");
 		//Do logic to check between now and the next level RARE CANDY
@@ -630,7 +630,7 @@ bool idItem::GiveToPlayer( idPlayer *player ) {
 		player->inventory.experience += 100;
 	}
 
-	if (idStr::Icmpn(name, "ammo_machinegun", 15) == 0)
+	if (idStr::Icmpn(name, "ammo_hyperblaster", 17) == 0)
 	{
 		gameLocal.Printf("GOT Here3");
 		//Juice up Strogg STROGG ROIDS
@@ -641,7 +641,7 @@ bool idItem::GiveToPlayer( idPlayer *player ) {
 		
 	}
 
-	if (idStr::Icmpn(name, "ammo_machinegun", 15) == 0)
+	if (idStr::Icmpn(name, "ammo_grenade", 12) == 0)
 	{
 		//Heal on item pickup
 		gameLocal.Printf("GOT Here4");
@@ -651,7 +651,7 @@ bool idItem::GiveToPlayer( idPlayer *player ) {
 		}
 	}
 
-	if (idStr::Icmpn(name, "ammo_machinegun", 15) == 0)
+	if (idStr::Icmpn(name, "ammo_dmg", 8) == 0)
 	{
 		//Invincibility juice
 		gameLocal.Printf("GOT Here5");
