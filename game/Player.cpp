@@ -3398,21 +3398,47 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 	int temp;
 	
 	assert ( _hud );
-
+	//JNB27 HUD Edits
 	if(mypokemon != NULL)
 	{
-		gameLocal.Printf("We live baby");
+		//gameLocal.Printf("We live baby");
 		char buff[500];
 		int hptest = ((idAI*)(mypokemon))->health;
 		sprintf_s(buff, "HP:\t%d", hptest);
 		_hud->SetStateString("pokemonhp", buff);
+
+		if (((idAI*)(mypokemon))->aifl.killerGuard == true)
+		{
+			char buff[500];
+			int jooce = 0;
+			sprintf_s(buff, "Roids ON", jooce);
+			_hud->SetStateString("roids", buff);
+		}
+
+		if (((idAI*)(mypokemon))->aifl.undying == true)
+		{
+			char buff[500];
+			int immor = 0;
+			sprintf_s(buff, "UNDYING", immor);
+			_hud->SetStateString("immortal", buff);
+		}
 	}
 	else{
-		gameLocal.Printf("We live part 2");
+		//gameLocal.Printf("We live part 2");
 		char buff[500];
 		int hptest = 0;
 		sprintf_s(buff, "No pokemon out", hptest);
 		_hud->SetStateString("pokemonhp", buff);
+
+		char buff2[500];
+		int immor = 0;
+		sprintf_s(buff2, "UNDYING OFF", immor);
+		_hud->SetStateString("immortal", buff2);
+
+		char buff3[500];
+		int jooce = 0;
+		sprintf_s(buff3, "Roids OFF", jooce);
+		_hud->SetStateString("roids", buff3);
 	}
 
 	char buff2[500];
