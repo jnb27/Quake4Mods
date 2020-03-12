@@ -617,7 +617,7 @@ bool idItem::GiveToPlayer( idPlayer *player ) {
 	{
 		//Running shoes
 		gameLocal.Printf("GOT Here");
-		pm_speed.SetFloat(600.0f);
+		pm_walkspeed.SetFloat(600.0f);
 	}
 
 	if (idStr::Icmpn(name, "ammo_nailgun", 12) == 0)
