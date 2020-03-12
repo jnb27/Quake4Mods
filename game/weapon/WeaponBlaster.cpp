@@ -458,15 +458,15 @@ stateResult_t rvWeaponBlaster::State_Fire ( const stateParms_t& parms ) {
 
 				idDict                test;
 				float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
-				if (gameLocal.GetLocalPlayer()->inventory.experience < 50)
+				if (gameLocal.GetLocalPlayer()->inventory.experience < 150)
 				{
 					test.Set("classname", "monster_strogg_marine");
 				}
-				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 50 && gameLocal.GetLocalPlayer()->inventory.experience < 100)
+				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 150 && gameLocal.GetLocalPlayer()->inventory.experience < 300)
 				{
 					test.Set("classname", "monster_berserker");
 				}
-				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 100 && gameLocal.GetLocalPlayer()->inventory.experience < 1000)
+				else if (gameLocal.GetLocalPlayer()->inventory.experience >= 300 && gameLocal.GetLocalPlayer()->inventory.experience < 9999999)
 				{
 					test.Set("classname", "monster_gladiator");
 				}
@@ -497,9 +497,9 @@ stateResult_t rvWeaponBlaster::State_Fire ( const stateParms_t& parms ) {
 					float                 yaw = gameLocal.GetLocalPlayer()->viewAngles.yaw;
 					idVec3 org = player->GetPhysics()->GetOrigin() + idAngles(0, yaw, 0).ToForward() * 80 + idVec3(0, 0, 1);
 					player->mypokemon->Killed(player, player, 100000, org, 1);
-					if (player->inventory.experience >= 75)
+					if (player->inventory.experience >= 55)
 					{
-						player->inventory.experience -= 75;
+						player->inventory.experience -= 55;
 					}
 					player->mypokemon = NULL;
 				}
