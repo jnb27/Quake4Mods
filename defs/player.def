@@ -703,11 +703,11 @@ entityDef player_marine
 	"weapon"						"weapon_blaster"
 	"current_weapon"					"0"
 
-	"pm_jumpheight"						"650"
-	"pm_stepsize"						"30" //was 16
-	"pm_speed"						"350"  	//DOOM speed was 140
+	"pm_jumpheight"						"75"
+	"pm_stepsize"						"16" //was 16
+	"pm_speed"						"235"  	//DOOM speed was 140
 	"pm_walkspeed"						"200"
-	"pm_crouchspeed"					"550"
+	"pm_crouchspeed"					"155"
 	"pm_noclipspeed"					"270"	
 	"pm_minviewpitch"					"-89"	// looking up
 //	"pm_maxviewpitch"					"53"	// looking down
@@ -716,8 +716,8 @@ entityDef player_marine
 	"pm_stamina"						"12"
 	"pm_staminathreshold"					"4"
 	"pm_staminarate"					"0.75"
-	"pm_crouchheight"					"6" //was 38
-	"pm_crouchviewheight"					"6" //was 32
+	"pm_crouchheight"					"38" //was 38
+	"pm_crouchviewheight"					"32" //was 32
 	"pm_normalheight"					"74"
 	"pm_normalviewheight"					"68" //was 68
 	"pm_deadheight"						"20"
@@ -750,7 +750,7 @@ entityDef player_marine
 
 	"max_ammo_blaster"					"-1"
 	"max_ammo_railgun"					"50"
-	"max_ammo_machinegun"					"300"
+	"max_ammo_machinegun"					"500" //Was 300
 	"max_ammo_nailgun"					"300"
 	"max_ammo_shotgun"					"50"
 	"max_ammo_hyperblaster"					"400"
