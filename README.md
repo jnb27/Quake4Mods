@@ -21,7 +21,7 @@ Another charged shot from the blaster will set it's behavior back to active and 
 
 4. Special Pickups
 In this mod I've created 5 special pickups to help the player and their partner progress through the game. All pickups are activated on pickup if that wasn't obvious.
-- Running Shoes (Napalm Ammo) 
+- Running Shoes (Napalm Ammo)
     The running shoes are given to the player early on in the game. The way I decided to emulate this was to increase the walk speed.
     In this game, the walk speed is triggered by holding SHIFT, so the same way running shoes are used by holding B.
     The running shoes are shown as a item pickup and adjusts the movement speed of the player while holding shift to simulate running.
