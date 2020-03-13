@@ -43,3 +43,8 @@ In this mod I've created 5 special pickups to help the player and their partner 
  Different guns provide different attack variations. 
  
  Enjoy !
+ 
+ -- List of Files Edited -- 
+ 
+ Everything in the defs folder is stuff that I've worked on for editing things like the map, gui, and defintion files. 
+ In the game folder I played with : the AI folder, weapons folders, Actor.cpp, Entity.cpp, Entity.h, Item.cpp, Player.cpp, and Player.h 
