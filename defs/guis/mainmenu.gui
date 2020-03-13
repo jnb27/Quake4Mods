@@ -4,6 +4,8 @@ windowDef Desktop
 	menugui	1
 	rect	0,0,640,480
 	backcolor	0,0,0,1
+	::	mousey
+	-	186
 	definevec4	"corner"	0.564,0.603,0.286,0.4
 	definevec4	"corner_0"	0.564,0.603,0.286,0
 	definevec4	"white"	1,1,1,1
@@ -20,8 +22,8 @@ windowDef Desktop
 	definevec4	"orange"	0.890,0.537,0,1
 	definevec4	"yellow_8"	1,0.745,0.137,0.8
 	definevec4	"grey1_4"	0.435,0.435,0.435,0.4
-	definefloat	"tooltip_x_offset"	gui::mousex-255
-	definefloat	"tooltip_y_offset"	gui::mousey-186
+	definefloat	"tooltip_x_offset"	gui
+	definefloat	"tooltip_y_offset"	gui
 	defineicon	"fve"	"gfx/guis/mainmenu/icon_favorite.tga"
 	defineicon	"pse"	"gfx/guis/mainmenu/icon_locked.tga"
 	defineicon	"dse"	"gfx/guis/mainmenu/icon_dedserver.tga"
@@ -887,25 +889,25 @@ windowDef Desktop
 				background	"gfx/guis/mainmenu/corner"
 				matcolor	0.564,0.603,0.286,0
 			}
-			windowDef main_t_b1
+			windowDef main_t_b12
 			{
 				rect	44,214,314,23
 				visible	1
-				forecolor	1,0,0,0.8
-				text	"#str_200000"
+				forecolor	1,1,1,0.8
+				text	"Start Adventure !"
 				textscale	0.33
 				font	"fonts/marine"
 			}
-			windowDef main_t_b2
+			windowDef main_t_b22
 			{
 				rect	44,244,314,23
 				visible	1
-				forecolor	1,0,0.501,0.8
-				text	"#str_200001"
+				forecolor	1,1,1,0.8
+				text	"Continue Adventure"
 				textscale	0.33
 				font	"fonts/marine"
 			}
-			windowDef main_t_b3
+			windowDef main_t_b32
 			{
 				rect	45,273,314,23
 				visible	1
@@ -1012,6 +1014,24 @@ windowDef Desktop
 				textscale	.22
 				font	"fonts/lowpixel"
 			}
+			windowDef main_t_b92
+			{
+				rect	50,183,314,23
+				visible	1
+				forecolor	1,1,1,0
+				text	"NOW FEATURING STROGGEMONS"
+				textscale	0.33
+				font	"fonts/marine"
+			}
+			windowDef main_t_b133
+			{
+				rect	46,180,312,23
+				visible	1
+				forecolor	1,1,1,0.8
+				text	"NOW FEATURING STROGGEMON"
+				textscale	0.33
+				font	"fonts/marine"
+			}
 		}
 		windowDef d_main
 		{
@@ -1074,8 +1094,8 @@ windowDef Desktop
 				rect	36,184,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200014"
-				textscale	.31
+				text	"Magikarp"
+				textscale	0.31
 				font	"fonts/marine"
 			}
 			windowDef new_t_b2
@@ -1083,8 +1103,8 @@ windowDef Desktop
 				rect	36,214,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200015"
-				textscale	.31
+				text	"Pikachu"
+				textscale	0.31
 				font	"fonts/marine"
 			}
 			windowDef new_t_b3
@@ -1092,8 +1112,8 @@ windowDef Desktop
 				rect	36,244,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200016"
-				textscale	.31
+				text	"Dragonite"
+				textscale	0.31
 				font	"fonts/marine"
 			}
 			windowDef new_t_b4
@@ -1101,8 +1121,8 @@ windowDef Desktop
 				rect	36,274,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200017"
-				textscale	.31
+				text	"Mewtwo"
+				textscale	0.31
 				font	"fonts/marine"
 			}
 			windowDef new_back
