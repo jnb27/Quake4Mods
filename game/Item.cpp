@@ -624,10 +624,19 @@ bool idItem::GiveToPlayer( idPlayer *player ) {
 	{
 		gameLocal.Printf("GOT Here2");
 		//Do logic to check between now and the next level RARE CANDY
+		if (player->inventory.experience < 150)
+		{
+			player->inventory.experience = 150;
+		}
+		else if (player->inventory.experience >= 150 && player->inventory.experience < 300)
+		{
+			player->inventory.experience = 300;
+		}
+		else if (player->inventory.experience > 300)
+		{
+			player->inventory.experience += 200;
+		}
 
-		
-
-		player->inventory.experience += 100;
 	}
 
 	if (idStr::Icmpn(name, "ammo_hyperblaster", 17) == 0)
